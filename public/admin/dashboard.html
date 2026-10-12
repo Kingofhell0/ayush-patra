@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Ayush Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="/img/logo.png" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img class="brand-logo small" src="/img/logo.png" alt="" width="42" height="42" />
+        <div>
+          <strong>AYUSH</strong>
+          <span>Portfolio Admin</span>
+        </div>
+      </div>
+
+      <nav>
+        <button class="nav-item active" data-section="dashboard">Dashboard</button>
+        <button class="nav-item" data-section="profile">Profile</button>
+        <button class="nav-item" data-section="skills">Skills</button>
+        <button class="nav-item" data-section="experience">Experience</button>
+        <button class="nav-item" data-section="projects">Projects</button>
+        <button class="nav-item" data-section="education">Education</button>
+        <button class="nav-item" data-section="achievements">Achievements</button>
+        <button class="nav-item" data-section="certifications">Certifications</button>
+        <button class="nav-item" data-section="sections">Sections</button>
+        <button class="nav-item" data-section="settings">Settings</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a href="/" target="_blank" rel="noopener" class="nav-link">View Portfolio ↗</a>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PORTFOLIO CONTROL CENTER</p>
+          <h1 id="pageTitle">Dashboard</h1>
+        </div>
+        <div class="admin-user">
+          <span id="adminName">Admin</span>
+          <span class="status-dot"></span>
+        </div>
+      </header>
+
+      <section id="dashboardSection" class="page-section active-section">
+        <div class="welcome-box">
+          <div>
+            <p class="eyebrow">WELCOME BACK</p>
+            <h2 id="welcomeName">Ayush</h2>
+            <p>Manage the content of your personal portfolio without editing the frontend code.</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><span>Skills</span><strong id="skillsCount">0</strong></article>
+          <article class="stat-card"><span>Experience</span><strong id="experienceCount">0</strong></article>
+          <article class="stat-card"><span>Projects</span><strong id="projectsCount">0</strong></article>
+          <article class="stat-card"><span>Education</span><strong id="educationCount">0</strong></article>
+          <article class="stat-card"><span>Achievements</span><strong id="achievementsCount">0</strong></article>
+          <article class="stat-card"><span>Certifications</span><strong id="certificationsCount">0</strong></article>
+        </div>
+
+        <div class="info-card">
+          <h3>Current profile</h3>
+          <div class="profile-preview">
+            <div><span>Name</span><strong id="previewName">—</strong></div>
+            <div><span>Location</span><strong id="previewLocation">—</strong></div>
+            <div><span>Email</span><strong id="previewEmail">—</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="profileSection" class="page-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CONTENT</p>
+            <h2>Profile</h2>
+          </div>
+        </div>
+
+        <form id="profileForm" class="form-card">
+          <div class="form-grid">
+            <div><label for="profileName">Name</label><input id="profileName" required /></div>
+            <div><label for="profileHeadline">Headline (shown under your name)</label><input id="profileHeadline" maxlength="80" placeholder="e.g. Full-Stack Developer · Cybersecurity" /></div>
+            <div><label for="profileLocation">Location</label><input id="profileLocation" /></div>
+            <div><label for="profileEmail">Email</label><input id="profileEmail" type="email" /></div>
+            <div><label for="profilePhone">Phone</label><input id="profilePhone" /></div>
+          </div>
+          <label for="profileObjective">Career Objective</label>
+          <textarea id="profileObjective" rows="5"></textarea>
+          <button class="primary-btn" type="submit">Save Profile</button>
+          <p id="profileMessage" class="message"></p>
+        </form>
+      </section>
+
+      <section id="skillsSection" class="page-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">CONTENT</p><h2>Skills</h2></div>
+        </div>
+        <form id="skillsForm" class="form-card">
+          <label for="skillsInput">One skill per line</label>
+          <textarea id="skillsInput" rows="14"></textarea>
+          <button class="primary-btn" type="submit">Save Skills</button>
+          <p id="skillsMessage" class="message"></p>
+        </form>
+      </section>
+
+      <section id="experienceSection" class="page-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CONTENT</p>
+            <h2>Experience</h2>
+          </div>
+          <button type="button" class="primary-btn" data-add="experience">+ Add Experience</button>
+        </div>
+        <div id="experienceList" class="content-list"></div>
+      </section>
+
+      <section id="projectsSection" class="page-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CONTENT</p>
+            <h2>Projects</h2>
+          </div>
+          <button type="button" class="primary-btn" data-add="projects">+ Add Project</button>
+        </div>
+        <div id="projectsList" class="content-list"></div>
+      </section>
+
+      <section id="educationSection" class="page-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CONTENT</p>
+            <h2>Education</h2>
+          </div>
+          <button type="button" class="primary-btn" data-add="education">+ Add Education</button>
+        </div>
+        <div id="educationList" class="content-list"></div>
+      </section>
+
+      <section id="achievementsSection" class="page-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CONTENT</p>
+            <h2>Achievements</h2>
+          </div>
+          <button type="button" class="primary-btn" data-add="achievements">+ Add Achievement</button>
+        </div>
+        <div id="achievementsList" class="content-list"></div>
+      </section>
+
+      <section id="certificationsSection" class="page-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CONTENT</p>
+            <h2>Certifications</h2>
+          </div>
+          <button type="button" class="primary-btn" data-add="certifications">+ Add Certification</button>
+        </div>
+        <div id="certificationsList" class="content-list"></div>
+      </section>
+
+      <section id="sectionsSection" class="page-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">VISIBILITY</p><h2>Portfolio Sections</h2></div>
+        </div>
+        <p class="muted-note">Turn a section off to hide it from your public portfolio. Your data is kept.</p>
+        <div class="form-card section-toggles" id="sectionToggles"></div>
+      </section>
+
+      <section id="settingsSection" class="page-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">ACCOUNT</p><h2>Security</h2></div>
+        </div>
+
+        <div class="info-card security-summary">
+          <div><span>Login email</span><strong id="secEmail">—</strong></div>
+          <div><span>Two-factor</span><strong id="secTotp">—</strong></div>
+          <div><span>Previous login</span><strong id="secPrev">—</strong></div>
+        </div>
+
+        <form id="emailForm" class="form-card">
+          <h3>Change login email</h3>
+          <p class="muted-note">Your email is your username. Changing it signs out every other device.</p>
+          <label for="newEmail">New email</label>
+          <input id="newEmail" type="email" autocomplete="off" required />
+          <label for="emailPassword">Current password</label>
+          <input id="emailPassword" type="password" autocomplete="current-password" required />
+          <button class="primary-btn" type="submit">Change Email</button>
+          <p id="emailMessage" class="message"></p>
+        </form>
+
+        <form id="passwordForm" class="form-card">
+          <h3>Change password</h3>
+          <p class="muted-note">At least 10 characters. Signs out every other device.</p>
+          <label for="currentPassword">Current password</label>
+          <input id="currentPassword" type="password" autocomplete="current-password" required />
+          <label for="newPassword">New password</label>
+          <input id="newPassword" type="password" autocomplete="new-password" minlength="10" required />
+          <button class="primary-btn" type="submit">Update Password</button>
+          <p id="passwordMessage" class="message"></p>
+        </form>
+
+        <div id="totpCard" class="form-card">
+          <h3>Two-factor login (authenticator app)</h3>
+          <p class="muted-note">With this on, someone who knows your email and password still cannot log in without the code on your phone.</p>
+
+          <form id="totpSetupForm">
+            <label for="totpSetupPassword">Current password</label>
+            <input id="totpSetupPassword" type="password" autocomplete="current-password" required />
+            <button class="primary-btn" type="submit">Set Up Two-Factor</button>
+          </form>
+
+          <form id="totpEnableForm" hidden>
+            <p class="muted-note">In Google Authenticator, Authy or Microsoft Authenticator choose <b>Add account → Enter a setup key</b>, and paste this key:</p>
+            <div class="secret-box"><code id="totpSecret"></code><button type="button" class="icon-btn" id="copySecret">Copy</button></div>
+            <p class="muted-note"><a id="totpLink" href="#">Or open it directly in an authenticator app on this device</a></p>
+            <label for="totpEnableCode">Then enter the 6-digit code it shows</label>
+            <input id="totpEnableCode" inputmode="numeric" autocomplete="one-time-code" maxlength="7" required />
+            <button class="primary-btn" type="submit">Turn On Two-Factor</button>
+          </form>
+
+          <form id="totpDisableForm" hidden>
+            <label for="totpDisablePassword">Current password</label>
+            <input id="totpDisablePassword" type="password" autocomplete="current-password" required />
+            <label for="totpDisableCode">Current 6-digit code</label>
+            <input id="totpDisableCode" inputmode="numeric" autocomplete="one-time-code" maxlength="7" required />
+            <button class="primary-btn danger-btn" type="submit">Turn Off Two-Factor</button>
+          </form>
+          <p id="totpMessage" class="message"></p>
+        </div>
+
+        <form id="revokeForm" class="form-card">
+          <h3>Think someone else is logged in?</h3>
+          <p class="muted-note">Signs out every other browser and device right now. You stay logged in here.</p>
+          <label for="revokePassword">Current password</label>
+          <input id="revokePassword" type="password" autocomplete="current-password" required />
+          <button class="primary-btn danger-btn" type="submit">Sign Out Everywhere Else</button>
+          <p id="revokeMessage" class="message"></p>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <!-- Add / edit dialog shared by all list sections -->
+  <dialog id="itemDialog" class="item-dialog">
+    <form id="itemForm" method="dialog">
+      <h3 id="dialogTitle">Add item</h3>
+      <div id="dialogFields"></div>
+      <p id="dialogMessage" class="message"></p>
+      <div class="dialog-actions">
+        <button type="button" class="ghost-btn" id="dialogCancel">Cancel</button>
+        <button type="submit" class="primary-btn" id="dialogSave">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Ayush Patra | Developer Portfolio</title>
+  <meta name="description" content="Ayush Patra — IT graduate, web developer, projects, skills and experience." />
+  <meta name="theme-color" content="#0b0b0e" />
+  <link rel="icon" type="image/svg+xml" href="/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="image" href="/img/hero.png" />
+  <link rel="stylesheet" href="/css/anime.css" />
+</head>
+<body class="booting">
+
+  <!-- intro splash (first visit of a session) -->
+  <div class="splash" id="splash" aria-hidden="true" hidden>
+    <div class="splash-inner">
+      <div class="splash-name" id="splashName"></div>
+      <div class="splash-sub">ポートフォリオ</div>
+      <div class="splash-bar"></div>
+    </div>
+  </div>
+
+  <!-- "Who's watching?" profile picker -->
+  <div class="picker" id="picker" role="dialog" aria-modal="true" aria-labelledby="pickerTitle" hidden>
+    <h2 id="pickerTitle">Who's watching?</h2>
+    <div class="profiles" id="profiles"></div>
+    <p class="picker-hint">Pick a profile — the page re-arranges itself for you.</p>
+  </div>
+
+  <header class="nav" id="nav">
+    <a class="logo" href="#top" aria-label="Back to top">
+      <img class="logo-image" src="/img/logo.png" alt="" width="38" height="38" />
+      <span class="logo-word" id="logoWord">AYUSH PATRA</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Sections"></nav>
+    <button class="profile-btn" id="profileBtn" type="button" aria-haspopup="dialog" title="Switch profile">
+      <span class="pf-avatar" id="pfAvatar"></span>
+      <span class="pf-name" id="pfName">Profile</span>
+      <svg viewBox="0 0 12 8" width="10" height="7" aria-hidden="true"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    </button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </header>
+
+  <main id="app">
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-bg" aria-hidden="true"><div class="tone"></div><div class="rays"></div><div class="glow"></div></div>
+
+      <figure class="hero-art" id="heroArt">
+        <img id="heroImg" src="/img/hero.png" alt="" width="900" height="1362" fetchpriority="high" />
+      </figure>
+
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="hero-kicker">
+            <span class="badge">PORTFOLIO</span>
+            <span class="kana">開発者</span>
+            <span class="headline" id="heroHeadline"></span>
+          </p>
+          <h1 class="hero-title"><span class="t-first" id="nameFirst"></span><span class="t-rest" id="nameRest"></span></h1>
+          <ul class="hero-meta" id="heroMeta"></ul>
+          <p class="hero-genres" id="heroGenres"></p>
+          <p class="hero-synopsis" id="heroSynopsis"></p>
+          <div class="hero-cta" id="heroCta"></div>
+        </div>
+      </div>
+
+      <aside class="code-card" id="codeCard" aria-hidden="true">
+        <div class="cc-bar"><i></i><i></i><i></i><span>dev.js</span></div>
+        <pre class="cc-body" id="codeBody"></pre>
+      </aside>
+    </section>
+
+    <!-- CONTINUE EXPLORING shelf -->
+    <section class="shelf-block" id="explore" hidden>
+      <div class="wrap shelf-head">
+        <h2>Continue Exploring</h2>
+        <div class="arrows">
+          <button type="button" id="shelfPrev" aria-label="Scroll left">‹</button>
+          <button type="button" id="shelfNext" aria-label="Scroll right">›</button>
+        </div>
+      </div>
+      <div class="shelf" id="shelf" tabindex="0" aria-label="Portfolio sections"></div>
+    </section>
+
+    <section class="block" id="about" hidden>
+      <div class="wrap">
+        <header class="block-head" data-head="about"></header>
+        <div class="about-grid">
+          <figure class="poster"><img src="/img/poster.jpg" alt="" loading="lazy" width="720" height="969" /></figure>
+          <div class="about-copy">
+            <p class="mini-label">SYNOPSIS</p>
+            <p class="about-text" id="aboutText"></p>
+            <dl class="facts" id="aboutFacts"></dl>
+            <ul class="pills" id="aboutGenres"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="skills" hidden>
+      <div class="wrap">
+        <header class="block-head" data-head="skills"></header>
+        <div class="skill-tree">
+          <div class="skill-tabs" id="skillTabs" role="tablist" aria-label="Skill categories"></div>
+          <div class="skill-grid" id="skillGrid" role="tabpanel"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="experience" hidden>
+      <div class="wrap">
+        <header class="block-head" data-head="experience"></header>
+        <div class="arcs" id="experienceList"></div>
+      </div>
+    </section>
+
+    <section class="block" id="projects" hidden>
+      <div class="wrap">
+        <header class="block-head" data-head="projects"></header>
+        <div class="episodes" id="projectsList"></div>
+      </div>
+    </section>
+
+    <section class="block" id="education" hidden>
+      <div class="wrap">
+        <header class="block-head" data-head="education"></header>
+        <div class="seasons" id="educationList"></div>
+      </div>
+    </section>
+
+    <section class="block" id="achievements" hidden>
+      <div class="wrap">
+        <header class="block-head" data-head="achievements"></header>
+        <div class="moments" id="achievementsList"></div>
+      </div>
+    </section>
+
+    <section class="block" id="certifications" hidden>
+      <div class="wrap">
+        <header class="block-head" data-head="certifications"></header>
+        <div class="certs" id="certificationsList"></div>
+      </div>
+    </section>
+
+    <!-- END CREDITS -->
+    <section class="credits" id="contact" hidden>
+      <div class="wrap">
+        <p class="mini-label center">つづく</p>
+        <h2 class="tbc">TO BE <em>CONTINUED…</em></h2>
+        <p class="tbc-sub" id="tbcSub"></p>
+        <div class="channels" id="contactList"></div>
+        <p class="credits-name" id="creditsName"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot"><div class="wrap"><span id="footText"></span></div></footer>
+
+  <script src="/js/anime.js"></script>
+</body>
+</html>

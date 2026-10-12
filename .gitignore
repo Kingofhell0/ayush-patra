@@ -1,0 +1,7 @@
+# Secrets and dependencies must never be committed
+.env
+.env.*
+!.env.example
+node_modules/
+npm-debug.log*
+.DS_Store
